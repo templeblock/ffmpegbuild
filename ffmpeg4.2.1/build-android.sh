@@ -36,6 +36,7 @@ echo "Compiling FFmpeg for $CPU"
     --enable-mediacodec \
     --enable-decoder=h264_mediacodec \
     --disable-programs \
+    --disable-asm \
     --disable-doc \
     --disable-ffmpeg \
     --disable-ffplay \
@@ -61,7 +62,7 @@ echo "The Compilation of FFmpeg for $CPU is completed"
 }
 
 # arm64-v8a
-ARCH=aarch64
+ARCH=arm64
 CPU=armv8-a
 CC=$TOOLCHAIN/bin/aarch64-linux-android$API-clang
 CXX=$TOOLCHAIN/bin/aarch64-linux-android$API-clang++
@@ -79,7 +80,7 @@ build_android
 # SYSROOT=$TOOLCHAIN/sysroot
 # CROSS_PREFIX=$TOOLCHAIN/bin/arm-linux-androideabi-
 # PREFIX=$(pwd)/android/$CPU
-# OPTIMIZE_CFLAGS="-mfloat-abi=softfp -mfpu=vfp -marm -march "
+# OPTIMIZE_CFLAGS="-mfloat-abi=softfp -mfpu=vfp -marm -march=$CPU "
 # build_android
 
 #x86
