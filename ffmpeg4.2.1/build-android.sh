@@ -1,7 +1,7 @@
 #!/bin/bash
 NDK=/Users/xiaopeng/Android/android-ndk-r20
 TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/darwin-x86_64
-API=29
+API=21
 
 function build_android
 {
@@ -42,6 +42,7 @@ echo "Compiling FFmpeg for $CPU"
     --disable-ffplay \
     --disable-ffprobe \
     --disable-avdevice \
+    --disable-iconv \
     --disable-doc \
     --disable-symver \
     --cross-prefix=$CROSS_PREFIX \
@@ -62,15 +63,15 @@ echo "The Compilation of FFmpeg for $CPU is completed"
 }
 
 # arm64-v8a
-ARCH=arm64
-CPU=armv8-a
-CC=$TOOLCHAIN/bin/aarch64-linux-android$API-clang
-CXX=$TOOLCHAIN/bin/aarch64-linux-android$API-clang++
-SYSROOT=$TOOLCHAIN/sysroot
-CROSS_PREFIX=$TOOLCHAIN/bin/aarch64-linux-android-
-PREFIX=$(pwd)/android/$CPU
-OPTIMIZE_CFLAGS="-march=$CPU"
-build_android
+# ARCH=arm64
+# CPU=armv8-a
+# CC=$TOOLCHAIN/bin/aarch64-linux-android$API-clang
+# CXX=$TOOLCHAIN/bin/aarch64-linux-android$API-clang++
+# SYSROOT=$TOOLCHAIN/sysroot
+# CROSS_PREFIX=$TOOLCHAIN/bin/aarch64-linux-android-
+# PREFIX=$(pwd)/android/$CPU
+# OPTIMIZE_CFLAGS="-march=$CPU"
+# build_android
 
 # armeabi-v7a
 # ARCH=arm
@@ -95,12 +96,12 @@ build_android
 # build_android
 
 #x86_64
-# ARCH=x86_64
-# CPU=x86-64
-# CC=$TOOLCHAIN/bin/x86_64-linux-android$API-clang
-# CXX=$TOOLCHAIN/bin/x86_64-linux-android$API-clang++
-# SYSROOT=$TOOLCHAIN/sysroot
-# CROSS_PREFIX=$TOOLCHAIN/bin/x86_64-linux-android-
-# PREFIX=$(pwd)/android/$CPU
-# OPTIMIZE_CFLAGS="-march=$CPU -msse4.2 -mpopcnt -m64 -mtune=intel"
-# build_android
+ARCH=x86_64
+CPU=x86-64
+CC=$TOOLCHAIN/bin/x86_64-linux-android$API-clang
+CXX=$TOOLCHAIN/bin/x86_64-linux-android$API-clang++
+SYSROOT=$TOOLCHAIN/sysroot
+CROSS_PREFIX=$TOOLCHAIN/bin/x86_64-linux-android-
+PREFIX=$(pwd)/android/$CPU
+OPTIMIZE_CFLAGS="-march=$CPU -msse4.2 -mpopcnt -m64 -mtune=intel"
+build_android
