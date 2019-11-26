@@ -63,37 +63,37 @@ echo "The Compilation of FFmpeg for $CPU is completed"
 }
 
 # arm64-v8a
-# ARCH=arm64
-# CPU=armv8-a
-# CC=$TOOLCHAIN/bin/aarch64-linux-android$API-clang
-# CXX=$TOOLCHAIN/bin/aarch64-linux-android$API-clang++
-# SYSROOT=$TOOLCHAIN/sysroot
-# CROSS_PREFIX=$TOOLCHAIN/bin/aarch64-linux-android-
-# PREFIX=$(pwd)/android/$CPU
-# OPTIMIZE_CFLAGS="-march=$CPU"
-# build_android
+ARCH=arm64
+CPU=armv8-a
+CC=$TOOLCHAIN/bin/aarch64-linux-android$API-clang
+CXX=$TOOLCHAIN/bin/aarch64-linux-android$API-clang++
+SYSROOT=$TOOLCHAIN/sysroot
+CROSS_PREFIX=$TOOLCHAIN/bin/aarch64-linux-android-
+PREFIX=$(pwd)/android/$CPU
+OPTIMIZE_CFLAGS="-march=$CPU"
+build_android
 
 # armeabi-v7a
-# ARCH=arm
-# CPU=armv7-a
-# CC=$TOOLCHAIN/bin/armv7a-linux-androideabi$API-clang
-# CXX=$TOOLCHAIN/bin/armv7a-linux-androideabi$API-clang++
-# SYSROOT=$TOOLCHAIN/sysroot
-# CROSS_PREFIX=$TOOLCHAIN/bin/arm-linux-androideabi-
-# PREFIX=$(pwd)/android/$CPU
-# OPTIMIZE_CFLAGS="-mfloat-abi=softfp -mfpu=vfp -marm -march=$CPU "
-# build_android
+ARCH=arm
+CPU=armv7-a
+CC=$TOOLCHAIN/bin/armv7a-linux-androideabi$API-clang
+CXX=$TOOLCHAIN/bin/armv7a-linux-androideabi$API-clang++
+SYSROOT=$TOOLCHAIN/sysroot
+CROSS_PREFIX=$TOOLCHAIN/bin/arm-linux-androideabi-
+PREFIX=$(pwd)/android/$CPU
+OPTIMIZE_CFLAGS="-mfloat-abi=softfp -mfpu=vfp -marm -march=$CPU "
+build_android
 
 #x86
-# ARCH=x86
-# CPU=x86
-# CC=$TOOLCHAIN/bin/i686-linux-android$API-clang
-# CXX=$TOOLCHAIN/bin/i686-linux-android$API-clang++
-# SYSROOT=$TOOLCHAIN/sysroot
-# CROSS_PREFIX=$TOOLCHAIN/bin/i686-linux-android-
-# PREFIX=$(pwd)/android/$CPU
-# OPTIMIZE_CFLAGS="-march=i686 -mtune=intel -mssse3 -mfpmath=sse -m32"
-# build_android
+ARCH=x86
+CPU=x86
+CC=$TOOLCHAIN/bin/i686-linux-android$API-clang
+CXX=$TOOLCHAIN/bin/i686-linux-android$API-clang++
+SYSROOT=$TOOLCHAIN/sysroot
+CROSS_PREFIX=$TOOLCHAIN/bin/i686-linux-android-
+PREFIX=$(pwd)/android/$CPU
+OPTIMIZE_CFLAGS="-march=i686 -mtune=intel -mssse3 -mfpmath=sse -m32"
+build_android
 
 #x86_64
 ARCH=x86_64
