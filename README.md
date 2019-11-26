@@ -2,6 +2,20 @@
 
 ## ffmpeg4.2.1
 ### NDK r20
+
+##### 编译动态库
+	  # 将ffmpeg-4.2.1目录中configure 文件中的：
+		SLIBNAME_WITH_MAJOR='$(SLIBNAME).$(LIBMAJOR)' 
+		LIB_INSTALL_EXTRA_CMD='$$(RANLIB) "$(LIBDIR)/$(LIBNAME)"' 
+		SLIB_INSTALL_NAME='$(SLIBNAME_WITH_VERSION)' 
+		SLIB_INSTALL_LINKS='$(SLIBNAME_WITH_MAJOR) $(SLIBNAME)'
+
+		#替换为：
+		SLIBNAME_WITH_MAJOR='$(SLIBPREF)$(FULLNAME)-$(LIBMAJOR)$(SLIBSUF)'
+		LIB_INSTALL_EXTRA_CMD='$$(RANLIB) "$(LIBDIR)/$(LIBNAME)"'
+		SLIB_INSTALL_NAME='$(SLIBNAME_WITH_MAJOR)'
+		SLIB_INSTALL_LINKS='$(SLIBNAME)'
+
 ##### API=29遇到的问题
 		dlopen failed: "has text relocations"
 		解决方案：--disable-asm 
